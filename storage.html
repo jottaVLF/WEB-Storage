@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Trabalhando com Session/Local Storage</title>
+		<script>
+			function clickContador() {
+				if (typeof(Storage) !== "undefined") {
+					if (localStorage.clickcount) {
+						localStorage.clickcount = Number(localStorage.clickcount) + 1;
+					} else {
+						localStorage.clickcount = 1;
+					}
+					document.getElementById("result").innerHTML = "Você clicou no botão " + localStorage.clickcount +  " vez(es).";
+				} else {
+					document.getElementById("result").innerHTML = "Desculpe, seu navegador não permite WEB storage...";
+				}
+			}
+			function clickContador1() {
+				if (typeof(Storage) !== "undefined") {
+					if (sessionStorage.clickcount) {
+						sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+					} else {
+						sessionStorage.clickcount = 1;
+					}
+					document.getElementById("result1").innerHTML = "Você clicou no botão " + sessionStorage.clickcount +  " vez(es).";
+				} else {
+					document.getElementById("result1").innerHTML = "Desculpe, seu navegador não permite WEB storage...";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<p><button onclick="clickContador()" type="button">Clique em mim!</button>
+		<div id="result"></div>
+		<p>Clique no botão e veja o contador crescer. LOCAL</p>
+		<p>Se você fechar a tab ou o navegador (BROWSER) toda vez que acessar aqui,
+		o resultado ainda estará armazenado</p>
+		
+		<p><button onclick="clickContador1()" type="button">Clique em mim!</button>
+		<div id="result1"></div>
+		<p>Clique no botão e veja o contador crescer. SESSION</p>
+		<p>Se você fechar a tab ou o navegador (BROWSER) toda vez que acessar aqui,
+		o resultado ainda estará armazenado</p>
+	</body>
+</html>
